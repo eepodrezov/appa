@@ -1,4 +1,12 @@
 .container {
-    background: red;
-    padding: 20px;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 100px;
+}
+
+.images {
+    display:flex;
+    gap: 10px;
 }

@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+
+    a {
+        font-size: 25px;
+        text-decoration: none;
+        color: black
+    }
+}
