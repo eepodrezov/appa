@@ -1,11 +1,12 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import webpack, { Configuration } from 'webpack'
+import webpack, { Configuration, DefinePlugin } from 'webpack'
 import  MiniCssExtractPlugin  from "mini-css-extract-plugin";
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 
 import { BuildOptions } from './types'
+import { platform } from 'os';
 
 
 export function buildPlugins({ mode, paths, ...options }:BuildOptions): Configuration['plugins'] {
@@ -15,6 +16,9 @@ export function buildPlugins({ mode, paths, ...options }:BuildOptions): Configur
 
     const plugins: Configuration['plugins'] = [
         new HtmlWebpackPlugin({ template: paths.html }),
+        new DefinePlugin({
+            __PLATFORM__: options.platform
+        })
     ]
 
 

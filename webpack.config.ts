@@ -1,12 +1,14 @@
 import webpack from 'webpack'
 import path from 'path'
 
-import { buildWebpack, BuildMode, BuildPaths } from './config/build'
+import { buildWebpack, BuildMode, BuildPaths, BuildPlatform } from './config/build'
+import { platform } from 'os'
 
 interface EvnVariables {
-    mode: BuildMode,
-    port: number,
+    mode?: BuildMode,
+    port?: number,
     analyzer?:boolean
+    platform?: BuildPlatform
 }
 
 export default (env: EvnVariables) => {
@@ -22,7 +24,8 @@ export default (env: EvnVariables) => {
         port: env.port ?? 3000,
         mode: env.mode ?? 'development',
         paths,
-        analyzer: env.analyzer
+        analyzer: env.analyzer,
+        platform: env.platform ?? 'desktop'
    })
     return config
 } 
