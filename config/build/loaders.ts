@@ -82,11 +82,20 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     ]
   };
 
+  const fontsLoaders = {
+    test: /\.(woff2?|ttf|otf|eot)$/,
+    type: 'asset/resource',
+    generator: {
+      filename: 'fonts/[name][ext]'
+    }
+  }
+
   return [
     assetLoader,
     svgrLoader,
     tsLoader,
     cssLoaderWithModules,
     cssLoaderWithoutModules,
+    fontsLoaders
   ];
 }

@@ -26,27 +26,42 @@ export function buildPlugins({ mode, paths, ...options }:BuildOptions): Configur
     if (isDev) {
         plugins.push(new webpack.ProgressPlugin())
         plugins.push(new ForkTsCheckerWebpackPlugin())
-        plugins.push(new ReactRefreshWebpackPlugin())
+        plugins.push(new ReactRefreshWebpackPlugin())        
     }
 
     if (isProd) {
+
+    
         plugins.push(
             new MiniCssExtractPlugin({
                     filename: 'css/[name].[contenthash:8].css',
                     chunkFilename: 'css/[name].[contenthash:8].css'
                 }
         ))
+
+        const localesCopyPattern: CopyPlugin.PluginOptions['patterns'] = [{
+            from: path.resolve(paths.public,'locales'), to: path.resolve(paths.output,'locales') 
+        }]
+        const fontsCopyPattern: CopyPlugin.PluginOptions['patterns'] = [{
+            from: 'public/fonts',   
+            to: 'fonts',             
+            noErrorOnMissing: true,  
+            globOptions: {
+                ignore: ['**/.DS_Store', '**/Thumbs.db'] 
+            }
+        }]
+
         plugins.push(
              new CopyPlugin({
-                patterns: [
-                    { from: path.resolve(paths.public,'locales'), to: path.resolve(paths.output,'locales') },
-                ],
+                    patterns: [
+                        ...localesCopyPattern,
+                        ...fontsCopyPattern
+                    ],
                 }),
         )
         if (options.analyzer) {
             plugins.push(new BundleAnalyzerPlugin())
         }
     }
-
    return plugins
 }
