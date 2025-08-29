@@ -5,9 +5,7 @@ export interface ButtonProps {
   disabled?: boolean;
 }
 
-export const Button = ({
-  children,
-  ...rest
-}: PropsWithChildren<ButtonProps>) => {
+export const Button = ({ children, ...rest }: PropsWithChildren<ButtonProps>) => {
+  console.log('a');
   return <button {...rest}>{children}</button>;
 };
