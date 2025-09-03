@@ -1,5 +1,9 @@
-import noConsoleLog from "./no-console-log.js";
+import { noConsoleCustomPluginRule, noConsoleRule } from './no-console-log.js';
 
-export default {
-  "no-console-log": "error",
+export const customPluginsRules = {
+  ...noConsoleCustomPluginRule,
+};
+
+export const customRules = {
+  ...noConsoleRule,
 };

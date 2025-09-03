@@ -1,31 +1,44 @@
-import js from "@eslint/js";
-import tseslint from "typescript-eslint";
-import reactPlugin from "eslint-plugin-react";
-import reactHooks from "eslint-plugin-react-hooks";
-import jsxA11y from "eslint-plugin-jsx-a11y";
-import prettier from "eslint-plugin-prettier";
+import js from '@eslint/js';
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import reactPlugin from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import prettier from 'eslint-plugin-prettier';
 
-import rules from "./.eslint/rules/index";
+import { customPluginsRules, rules } from './.eslint/rules/index.js';
 
 export default [
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
-  reactPlugin.configs.recommended,
-  reactHooks.configs.recommended,
-  jsxA11y.configs.recommended,
   {
+    ignores: ['build/**', 'node_modules/**'],
+  },
+  js.configs.recommended,
+  {
+    files: ['src/**/*.{js,ts,tsx}'],
     plugins: {
+      '@typescript-eslint': tseslint,
+      react: reactPlugin,
+      'react-hooks': reactHooks,
+      'jsx-a11y': jsxA11y,
       prettier,
-    },
-    rules,
-    languageOptions: {
-      parser: tseslint.parser,
-      ecmaVersion: 2020,
-      sourceType: "module",
-      globals: {
-        window: "readonly",
-        document: "readonly",
+      custom: {
+        rules: customPluginsRules,
       },
     },
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+      globals: {
+        window: 'readonly',
+        document: 'readonly',
+      },
+    },
+    rules,
   },
 ];

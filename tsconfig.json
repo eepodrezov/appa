@@ -1,26 +1,27 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "noImplicitAny": true,
+    "target": "es2015",
     "module": "esnext",
-    "target": "es5",
+    "moduleResolution": "bundler",
     "jsx": "react-jsx",
     "allowJs": true,
-    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "noEmit": true,
+    "strict": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "resolveJsonModule": true
   },
   "ts-node": {
     "compilerOptions": {
-        "module": "commonjs"
+      "module": "commonjs"
     }
   },
-    "include": [
-        "src/**/*",
-        "global.d.ts" 
-  ]
+  "include": ["src/**/*", "global.d.ts", ".prettierrc.json"],
+  "exclude": ["node_modules", "build"]
 }
