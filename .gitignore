@@ -1,3 +1,9 @@
 /build
 node_modules
+
+coverage/**
+!coverage/
+!coverage/coverage-summary.json
+
+
 /.vscode
