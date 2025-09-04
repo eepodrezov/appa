@@ -12,7 +12,7 @@
     "lint": "eslint --fix",
     "format": "prettier --write 'src/**/*.{js,ts,tsx,json,css,md}'",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "check:coverage": "node config/tests/check-coverage.js"
   },
   "keywords": [],
   "author": "",

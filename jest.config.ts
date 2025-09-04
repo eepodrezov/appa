@@ -1,3 +1,5 @@
+import thresholds from './config/tests/thresholds'
+
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jest-environment-jsdom',
@@ -9,10 +11,7 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.{ts,tsx,js,jsx}', '!src/**/*.d.ts'],
   coverageThreshold: {
     global: {
-      statements: 0,
-      branches: 0,
-      functions: 0,
-      lines: 0,
+      ...thresholds,
     },
   },
 }
