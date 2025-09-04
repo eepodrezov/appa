@@ -1,22 +1,25 @@
 import { Outlet } from 'react-router-dom'
 
+import { Header } from '@/components/header'
 import { Navbar } from '@/features/navbar'
-import imagePng from '@/assets/png.png'
-import imageJpeg from '@/assets/jpeg.jpeg'
-import Svg from '@/assets/svg.svg'
+import logoIcon from '@/assets/logo-icon.jpeg'
 
 import styles from './main.module.scss'
 
 export const Main = () => {
   return (
     <div className={styles.container}>
-      <Navbar />
-      <h1>Привет! Я базовое приложение</h1>
-      <h2>Но во мне есть все, что может тебе понадобиться</h2>
-      <div className={styles.images}>
-        <img width={100} src={imagePng} alt="imagePng" />
-        <img width={100} src={imageJpeg} alt="imageJpeg" />
-        <Svg width={100} height={100} />
+      <Header panel={<Navbar />} />
+      <div className={styles.content}>
+        <div className={styles.text}>
+          <h1 className={styles.header}>Привет! Я базовое приложение</h1>
+          <h2 className={styles.subheader}>
+            Но во мне есть все, что может тебе понадобиться
+          </h2>
+        </div>
+        <div className={styles.media}>
+          <img width={400} src={logoIcon} alt="logoIcon" />
+        </div>
       </div>
 
       <Outlet />

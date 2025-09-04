@@ -1,12 +1,28 @@
 .container {
-    width: 100%;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 100px;
+  gap: 50px;
 }
 
-.images {
-    display:flex;
-    gap: 10px;
+.header {
+  font-size: 60px;
+}
+
+.subheader {
+  font-size: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+
+.media {
+  img {
+    min-width: 100px;
+  }
 }
